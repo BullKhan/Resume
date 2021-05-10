@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+/* font-family: 'Bungee', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+/* font-family: 'Noto Sans KR', sans-serif; */
+
+body { min-height: 1000px; font-family: 'Noto Sans KR', sans-serif;}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100vh;
+    /* padding: 0 100px; */
+    background: #000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all 1s;
+    z-index: 99999;
+    font-family: 'Bungee', cursive;
+}
+header.sticky {
+    height: 100px;
+}
+header .banner {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 1s;
+}
+header.sticky .banner {
+   opacity: 0.5;
+}
+header .logo {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 20vw;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+}
+header.sticky .logo {
+    position: absolute;
+    width: 65px;
+    left: 100px;
+    transform: translate(0, -50%);
+}
+header .logo img { width: 100%; }
+nav {
+    position: relative;
+    display: flex;
+    /* justify-self: right; */
+    margin-right: 100px;
+    margin-bottom: 8px;
+}
+nav ul {
+    position: relative;
+    display: flex;
+    transition: all 0.25s;
+    transform: translateX(100px);
+    opacity: 0;
+}
+header.sticky nav ul {
+    transform: translateX(0px);
+    opacity: 1;
+    transition-delay: 0.25s;
+    visibility: visible;
+}
+nav ul li a {
+    color: #fff;
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 1.2em;
+    transition: 0.2s;
+}
+nav ul li a:hover {
+    color: #ff275f;
+}
+
+/* smoke letter 효과 */
+section .bg {
+    height: 800px;
+    background: url(../images/wallpaper-sail-sea-horizon-sky-minimalism-water.jpg) no-repeat;
+    background-position-y: -300px;
+    background-size: cover;
+    position: relative;
+    transition: all 0.4s;
+}
+section .bg h2 {
+    position: absolute;
+    width: 100%;
+    bottom: 30%; left: 50%;
+    transform: translate(-50%,-50%);
+    color: #0D47A1; font-size: 50px;
+    letter-spacing: 5px; text-align: center;
+    text-shadow: 4px 4px 0px #2770c4, 8px 8px 0px #42A5F5, 12px 12px 0px #E3F2FD;
+    user-select: none;
+}
+section .bg h2 span {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+section .bg h2 span.active {
+    animation: smoke 1s linear forwards;
+    transform-origin: bottom;
+}
+@keyframes smoke {
+    0% { 
+        opacity: 1; filter: blur(0);
+        transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+    }
+    50% { 
+        opacity: 1; pointer-events: none; 
+        transform: translateX(0) translateY(0) scale(1);
+    }
+    100% { 
+        opacity: 0; filter: blur(20px);
+        transform: translateX(0px) translateY(300px) rotate(720deg) scale(4);
+    }
+}
+/* 파도 이펙트 */
+.waveb {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url(../images/wave_0080ff.png);
+    background-size: 1000px 100px;
+    animation: waving 4s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.5s);
+}
+.wavew {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url(../images/wave.png);
+    background-size: 1000px 100px;
+    animation: waving 4s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.25s);
+}
+@keyframes waving {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(10px); }
+}
+#wave1 {
+    z-index: 1000; opacity: 1;
+    background-position-x: 600px;
+    display: n;
+}
+#wave2{
+    z-index: 999; opacity: 0.6;
+    background-position-x: 300px;
+}
+#wave3 {
+    z-index: 998; opacity: 0.35;
+    background-position-x: 450px;
+}
+#wave4 {
+    z-index: 997; opacity: 0.25;
+    background-position-x: 150px;
+}
+
+/* section common */
+section .section_wrap {
+    background: linear-gradient(#0080ff, #1b69d0, #2154a2, #213f77, #1c2b4f, #141929, #000000);
+}
+section .section_wrap > div {
+    /* height: 100vh; */
+    padding: 100px;
+    border: 1px solid red;
+    margin: 0 100px;
+}
+section h2 {
+    font-size: 48px;
+    color: #fff;
+    font-family: 'Bungee', cursive;
+}
+section h3 {
+    font-size: 40px;
+    color: #fff;
+    padding: 20px 0;
+}
+section p {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #fff;
+}
+section .sbox {
+    margin-top: 20px;
+    border: 1px solid yellow;
+}
+
+/* section 1 */
+section .section1 .s1box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section .intro_picture {
+    position: relative;
+    height: 400px;
+    flex: 0 1 30%;
+}
+section .intro_content {
+    flex: 0 1 70%;
+    padding: 20px;
+    display: inline-flex;
+    flex-direction: column;
+}
+section .cardbox {
+    position: absolute;
+    top: 0; left: 0;
+    width: 300px; height: 400px;
+    border-radius: 10px;
+}
+section .middle {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+}
+section .card {
+    cursor: pointer;
+    width: 300px; height: 400px;
+}
+section .front, .back {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    transition: transform 0.6s linear;
+    border-radius: 10px;
+}
+section .front img { width:100%; height: 100%; }
+section .back img { width: 60%;}
+section .front{
+    transform: perspective(600px) rotate(0deg);
+}
+section .back {
+    background: #f1f1f1;
+    transform: perspective(600px) rotateY(180deg);
+}
+section .backcontent { text-align: center; width: 100%; }
+section .backcontent p { color: #25313d; }
+section .backcontent p:nth-of-type(1) { font-size: 24px; margin-top: 10px }
+section .backcontent p:nth-of-type(2) { font-size: 14px; margin-top: 5px }
+section .sns {
+    margin: 10px 0;
+    font-size: 20px;
+}
+section .sns a {
+    display: inline-flex;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    background: #f1f1f1;
+    font-size: 18px;
+    transition: 0.4s;
+}
+section .sns a:hover {
+    background: #25313d;
+    color: #f1f1f1;
+}
+section .card:hover > .front{
+    transform: perspective(600px) rotateY(-180deg);
+}
+section .card:hover > .back{
+    transform: perspective(600px) rotateY(0deg);
+}
+section .section1 .intro_content .ic1 p {
+    word-break: keep-all;
+}
+section .section1 .intro_content .ic2 {
+    color: #fff; font-size: 20px; margin: 20px 0;
+    text-align: right; font-weight: bold;
+    line-height: 1.2;
+}
+section .section1 .intro_content .ic2 p { margin-right:20px; }
+section .section1 .intro_content .ic3 {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+section .section1 .intro_content .ic3 > a {
+    color: #fff; font-size: 20px;
+    padding: 20px 40px; background: rgba(0,0,0,0.5);
+    margin-top: 20px; margin-right: 20px;
+    transition: 0.4s;
+}
+section .section1 .intro_content .ic3 > a:hover {
+    color: #ff275f; background: rgba(0,0,0,0.8);
+}
+
+/* section2 */
+.s2box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.s2box > div { flex:1 }
+
+
+/* 반응형 */
+@media screen and (max-width: 1490px) {
+    section .bg {
+        height: 600px;
+    }
+}
+@media screen and (max-width: 1200px) {
+    section .bg {
+        height: 500px;
+    }
+}
+@media screen and (max-width: 1100px) {
+    section .bg {
+        background-position-y: -200px;
+    }
+}
+@media screen and (max-width: 950px) {
+    section .bg {
+        background-position-y: -100px;
+    }
+}
+@media screen and (max-width: 900px) {
+    header {
+        padding: 40px;
+    }
+    section h2 { font-size: 40px; }
+    header.sticky .logo {
+        left: 40px;
+    }
+    header.sticky .banner {
+        opacity: 0;
+    }
+    nav ul {
+        /* display: none;
+        opacity: 0;
+        visibility: hidden; */
+        position: fixed;
+        top: 100px;
+        left: 0;
+        width: 100%; height: 0;
+        background: #000;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    nav.active ul {
+        width: 100%; height: calc(100vh - 100px);
+    }
+    nav ul li a {
+        font-size: 2em;
+        padding: 5px 15px;
+        margin: 10px 0;
+    }
+    header.sticky .toggle {
+        position: fixed;
+        top: 25px; right: 40px;
+        width: 50px; height: 50px;
+        cursor: pointer;
+        color: #fff; font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 800px) {
+    section .bg {
+        background-position-y: 0px;
+    }
+}
+
+
+
