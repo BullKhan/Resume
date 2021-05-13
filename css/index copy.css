@@ -172,18 +172,13 @@ section .bg h2 span.active {
 /* section common */
 section .section_wrap {
     background: linear-gradient(#0080ff, #1b69d0, #2154a2, #213f77, #1c2b4f, #141929, #000000);
-    display: flex;
-    flex-direction: column;
+    
 }
 section .section_wrap > div {
-    /* padding: 100px 0 50px; */
+    /* height: 100vh; */
+    padding: 100px;
     border: 1px solid red;
     margin: 0 100px;
-    height: calc(100vh - 100px);
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
 }
 section h2 {
     font-size: 48px;
@@ -351,20 +346,16 @@ section .s2box .glassbox .glass {
     position: absolute;
     top:0; left:0;
     height: 100%; width:100%;
-    background: #000;
+    background: #080808;
+    pointer-events: none;
     z-index: 3;
-    transition: .3s;
 }
 section .s2box .glassbox .educontent {
-    padding: 20px; color: rgb(14, 14, 14);
+    padding: 20px; color: #fff;
     z-index: 4; background: rgba(255,255,255,.1);
     top:0; left:0;
     height: 100%; width:100%;
     position: relative;
-    pointer-events: none;
-}
-section .s2box .glassbox .glass:hover {
-    background: rgba(0,0,0,.8);
 }
 section .s2box .educontent .etitle { position: relative; }
 section .s2box .educontent .etitle h2 {
@@ -414,12 +405,6 @@ section .s2box .educontent p:nth-of-type(3) {
     justify-content: space-around;
     align-content: center;
 }
-.s3box .skillwrap .skill {
-    width: 40%; text-align: center;
-}
-.s3box .skillwrap .skill h3 {
-    margin-bottom: 20px;
-}
 .tskill_content {
     padding: 10px 0;
     /* border: 1px solid #fff; */
@@ -428,84 +413,66 @@ section .s2box .educontent p:nth-of-type(3) {
     position: relative;
 }
 .s3box .skillwrap .techskill .info .tsname {
-    position: absolute; top:-10px; left:0;
-    font-size: 18px; opacity: 0.9;
+    position: absolute; top:0; left:0;
+    font-size: 15px; opacity: 0.9;
 }
 .s3box .skillwrap .techskill .info .percentage_num{
-    position: absolute; top:-10px; right:0;
-    font-size: 18px;
+    position: absolute; top:0; right:0;
+    font-size: 14px;
 }
 .s3box .skillwrap .techskill .progess_bar {
     position: relative; width: 100%; height: 7px;
     margin: 30px 0 2px;
     border-radius: 10px;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.5);
 }
 .s3box .skillwrap .techskill .progess_bar .bar_content {
     position: absolute;
     top:0; left:0;
     height: 7px;
     border-radius: 10px;
-    background: linear-gradient(90deg,#0bceaf, orange);
+    /* border-top-right-radius: 0px; */
+    background: #0bceaf;
 }
 
-.s3box .personalskill ul.profskill_content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-}
-.s3box .personalskill ul.profskill_content li {
+.s3box .personalskill li {
     color: #fff;
     display: inline-block;
+    margin: 0 auto;
+    width: 48%;
     margin-bottom: 30px;
     text-align: center;
-    position: relative;
-    width: 50%;
 }
-.circle_bar p {
+.mh-progress {
+    margin-bottom: 10px;
+    font: 900 1.14285/1 Cinzerl, cursive;
+    color: #fff;
+}
+.mh-progress .progressbar-text {
+    color: inherit !important;
+}
+.progess.progress-line {
+    height: 10px;
+    margin-right: 60px;
+}
+.progess.progress-line .progressbar-text {
     position: absolute;
-    top:50%; left:50%;
-    transform: translate(-50%,-80%);
-    font-size: 30px !important;
+    top:50%; left:100%;
+    width: 60px;
+    transform: translateY(-35%);
     text-align: center;
-    width: 100px; text-align: center;
-    height: 100px; line-height: 100px;
 }
-.s3box .personalskill ul.profskill_content li .profsname {
-    margin: 20px; text-align: center;
-    font-size: 18px !important;
+/* .mh-progress.mh-progress-circle */
+.mh-progress.circle_bar {
+    display: inline-block;
+    width: 100px; height:100px;
 }
-
-/* section4 */
-.s4box {
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    flex-wrap: wrap;
-    margin: 30px;
+.mh-progress path:nth-child(1) {
+    stroke: rgba(0,0,0,0.1);
 }
-.s4box .pfbox {
-    width: 45%;
-    position: relative;
-    display: flex;
-    height: 250px;
-    background: rgba(0,0,0,.5);
-    margin: 20px 0;
+.mh-progress path:nth-child(2) {
+    stroke: #0bceaf !important;
 }
-.s4box .pfbox .pfimgbox {
-    position: absolute;
-    left:0; top:0; right:0; bottom:0;
-    background-size: cover;
-}
-.s4box .pfbox .pfim1 { background: url(../images/pf1.JPG) center; }
-.s4box .pfbox .pfim2 { background: url(../images/pf2.JPG) center; }
-.s4box .pfbox .pfim3 { background: url(../images/pf3.JPG) center; }
-.s4box .pfbox .pfim4 { background: url(../images/pf4.JPG) center; }
-
-
-
-
 
 /* 반응형 */
 @media screen and (max-width: 1490px) {

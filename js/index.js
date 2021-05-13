@@ -60,6 +60,105 @@ elToggle.onclick = function(){
     } else { $(this).find('ul').slideDown(500); }
 }
 
+$('nav .depth1 > li').on('click', function(){
+    $(this).addClass('on')
+    .siblings().removeClass('on')
+})
+
+var aboutTop = $('#aboutme').offset().top - 100;
+var educationTop = $('#education').offset().top - 100;
+var skillsTop = $('#skills').offset().top - 100;
+var pfTop = $('#pf').offset().top - 100;
+var lastTop = $('contactme').height() - 100;
+$('nav .depth1 > li').on('click', function(e){
+    e.preventDefault();
+    // $(this).addClass('on').siblings().removeClass('on');
+    var num = $(this).index()
+    switch(num) {
+        case 0 : $('html').stop().animate({ scrollTop:1 },500); break;
+        case 1 : $('html').stop().animate({ scrollTop:aboutTop },500); break;
+        case 2 : $('html').stop().animate({ scrollTop:educationTop },500); break;
+        case 3 : $('html').stop().animate({ scrollTop:skillsTop },500); break;
+        case 4 : $('html').stop().animate({ scrollTop:pfTop },500); break;
+        case 5 : $('html').stop().animate({ scrollTop:lastTop },500); break;
+    }
+})
+$('.depth1 > li').eq(0).addClass('on')
+
+// 막대 그래프 그리기
+function draw(point,clname) {
+    var cnt=0;
+    var stop = setInterval(function(){
+        cnt++;
+        if (cnt<=point) {
+            $(clname).find('.percentage_num').text(cnt+'%');
+            $(clname).find('.bar_content').css({
+                width:cnt+'%'
+            })            
+        } else {
+            clearInterval(stop);
+            return false
+        }
+    },10)
+}
+
+// 도넛 그래프 그리기
+function circleGraph(point, circleid) {
+    $(circleid).circleProgress({
+        value: point/100,
+        startAngle: -Math.PI/2,
+        size: 150,
+        fill: {
+          gradient: ["#0bceaf", "orange"],
+        }
+    }).on('circle-animation-progress', function(event, progress) {
+        $(this).find('p').html(Math.round(point * progress) + '<i>%</i>');
+    });
+}
+
+$(window).on('scroll', function(){
+    var sct = $(this).scrollTop() + 200;
+    if( sct >= 1 && sct < aboutTop ) {
+        $('.depth1 > li').eq(0).addClass('on').siblings().removeClass('on')
+    } else if( sct >= aboutTop && sct < educationTop ) {
+        $('.depth1 > li').eq(1).addClass('on').siblings().removeClass('on')
+    } else if ( sct >= educationTop && sct < skillsTop ) {
+        $('.depth1 > li').eq(2).addClass('on').siblings().removeClass('on')
+        $('.tskill_content').removeClass('on').find('.bar_content').css({
+            width:"0%"
+        })
+        $('.tskillname').find('.percentage_num').text('0%');
+        $('.circle_bar').addClass('.active');
+        circleGraph(0, '.circle_bar');
+    } else if ( sct >= skillsTop && sct < pfTop ) {
+        $('.depth1 > li').eq(3).addClass('on').siblings().removeClass('on')
+        if ( !$('.tskill_content').hasClass('on') ) {
+            $('.tskill_content').addClass('on');
+            draw(92, '.html5');
+            draw(86, '.css3');
+            draw(82, '.javascript');
+            draw(80, '.jquery');
+            draw(76, '.react');
+            draw(72, '.php');
+            circleGraph(88, '#cr1');
+            circleGraph(93, '#cr2');
+            circleGraph(90, '#cr3');
+            circleGraph(85, '#cr4');
+        }
+        circleGraph()
+    } else if ( sct >= pfTop && sct < lastTop ) {
+        $('.depth1 > li').eq(4).addClass('on').siblings().removeClass('on')
+        $('.tskill_content').removeClass('on').find('.bar_content').css({
+            width:"0%"
+        })
+        $('.tskillname').find('.percentage_num').text('0%');
+        circleGraph(0, '.circle_bar');
+    } else if ( sct >= lastTop ) {
+        $('.depth1 > li').eq(5).addClass('on').siblings().removeClass('on')
+    }
+})
+
+
 
 
 
