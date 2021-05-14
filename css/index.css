@@ -11,7 +11,6 @@ header {
     top: 0; left: 0;
     width: 100%;
     height: 100vh;
-    /* padding: 0 100px; */
     background: #000;
     display: flex;
     justify-content: flex-end;
@@ -48,12 +47,20 @@ header.sticky .logo {
     transform: translate(0, -50%);
 }
 header .logo img { width: 100%; }
-nav {
+header nav {
+    position: relative;
+    margin-right: -1000px;
+    margin-bottom: 8px;
+    opacity: 0;
+    transition: margin-right 0.5s;
+    transition: opacity 0.5s 0.5s;
+}
+header.sticky nav {
     position: relative;
     display: flex;
-    /* justify-self: right; */
     margin-right: 100px;
     margin-bottom: 8px;
+    opacity: 1;
 }
 nav ul {
     position: relative;
@@ -76,7 +83,7 @@ nav ul li a {
     transition: 0.2s;
 }
 nav ul li a:hover {
-    color: #ff275f;
+    color: #9aff27;
 }
 nav ul li.on a {
     color: #ff275f;
@@ -107,7 +114,7 @@ section .bg h2 span {
     cursor: pointer;
 }
 section .bg h2 span.active {
-    animation: smoke 1s linear forwards;
+    animation: smoke 0.75s linear forwards;
     transform-origin: bottom;
 }
 @keyframes smoke {
@@ -171,15 +178,16 @@ section .bg h2 span.active {
 
 /* section common */
 section .section_wrap {
-    background: linear-gradient(#0080ff, #1b69d0, #2154a2, #213f77, #1c2b4f, #141929, #000000);
+    background: linear-gradient(
+        #0080ff, #1b69d0, #2154a2, #213f77, 
+        #1c2b4f, #141929,#000000 85%
+        );
     display: flex;
     flex-direction: column;
 }
-section .section_wrap > div {
-    /* padding: 100px 0 50px; */
-    border: 1px solid red;
+section .section_wrap > div {   /*section#*/
     margin: 0 100px;
-    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -202,7 +210,6 @@ section p {
 }
 section .sbox {
     margin-top: 20px;
-    border: 1px solid yellow;
 }
 
 /* section 1 */
@@ -321,7 +328,7 @@ section .s2box .glassbox {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px;
+    margin: 20px;
     background: #1f386a;
 }
 section .s2box .glassbox:before {
@@ -486,25 +493,255 @@ section .s2box .educontent p:nth-of-type(3) {
     margin: 30px;
 }
 .s4box .pfbox {
-    width: 45%;
     position: relative;
     display: flex;
     height: 250px;
-    background: rgba(0,0,0,.5);
+    width: 45%;
+    background: rgba(255,255,255,0.8);
     margin: 20px 0;
+    transition: 0.4s;
+}
+.s4box .pfbox:hover {
+    border-radius: 20px;
 }
 .s4box .pfbox .pfimgbox {
     position: absolute;
-    left:0; top:0; right:0; bottom:0;
-    background-size: cover;
+    left: 50%; transform: translateX(-50%);
+    top:0;
+    /* right:0; bottom:0; */
+    width:100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
 }
-.s4box .pfbox .pfim1 { background: url(../images/pf1.JPG) center; }
-.s4box .pfbox .pfim2 { background: url(../images/pf2.JPG) center; }
-.s4box .pfbox .pfim3 { background: url(../images/pf3.JPG) center; }
-.s4box .pfbox .pfim4 { background: url(../images/pf4.JPG) center; }
+.s4box .pfbox .pfimgbox img {
+    width:200px; transition: 0.5s ease-in-out;
+}
+.s4box .pfbox:hover .pfib3 img {
+    width:100px;
+}
+.s4box .pfbox:hover .pfimgbox {
+    width:300px; height: 100px;
+    left: 50%; transform: translateX(-50%);
+    top: -25px; border: 3px solid #aaa;
+    color: #000;
+}
+.s4box .pfbox .pfBoxContent {
+    position: absolute;
+    bottom:0; left:0; top:75px;
+    width: 100%;
+    height: 70%;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.s4box .pfbox .pfBoxContent h3 {
+    font-size: 30px; font-weight: 900; padding: 10px 0; 
+    color: #000;
+}
+.s4box .pfbox .pfBoxContent p:nth-of-type(1) {
+    font-size: 20px; color: #000;
+}
+.s4box .pfbox .pfBoxContent p:nth-of-type(2) {
+    font-size: 25px; color: #000; font-weight: 700;
+}
+.s4box .pfbox .pfBoxContent p:nth-of-type(2) img.jqlogo {
+    width: 100px;
+}
+.s4box .pfbox .pfBoxContent p:nth-of-type(2) img.ajaxlogo {
+    width: 50px;
+}
+.s4box .pfbox .pfBoxContent p:nth-of-type(2) img.mysqllogo {
+    width: 50px;
+}
+.s4box .pfbox .pfBoxContent p:nth-of-type(2) img.apilogo {
+    width: 40px;
+}
+.s4box .pfbox .pfBoxContent a {
+    display: block;
+    background: rgba(0,0,0,.8);
+    padding: 10px 25px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    color: #fff; font-weight: 900;
+    transition: 0.4s;
+}
+.s4box .pfbox .pfBoxContent a:hover {
+    background: rgba(0,0,0,1);
+    border-radius: 20px;
+}
+.gradiText {
+    background: linear-gradient(90deg,
+        #bee9fa 0%, #ff275f 25%, #82ff48 50%, #ff275f 75%, #bee9fa 100%
+    );
+    background-size: 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 10s linear infinite;
+    font-size: 20px;
+    transition: 0.3s;
+}
+@keyframes gradient {
+    100% {
+        background-position: 600%;
+    }
+}
+.s4box .pfbox .pfBoxContent a:hover .gradiText {
+    background : #ff275f;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-
-
+/* section5 */
+.s5box h3 {
+    text-align: center;
+    font-weight: 700;
+}
+.s5box .cmcontainer {
+    color :#fff;
+    position: relative;
+    min-width: 1100px;
+    min-height: 550px;
+    display: flex;
+    z-index: 1000;    
+}
+.s5box .cmcontainer .contactInfo {
+    position: absolute;
+    top: 40px;
+    width: 350px;
+    height: calc(100% - 80px);
+    background: #0f3959;
+    z-index: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-self: center;
+}
+.s5box .cmcontainer .contactInfo ul.info {
+    position: relative;
+    margin: 60px 0 20px;
+}
+.s5box .cmcontainer .contactInfo ul.info li {
+    position: relative;
+    display: flex;
+    margin: 20px 0;
+    cursor: pointer;
+    align-items: flex-start;
+}
+.s5box .cmcontainer .contactInfo ul.info li span {
+    font-size: 20px; line-height: 30px; opacity: 0.5;
+}
+.s5box .cmcontainer .contactInfo ul.info li:hover span {
+    opacity: 1;
+}
+.s5box .cmcontainer .contactInfo ul.info li span:nth-child(1) {
+   width:30px; margin-right: 20px;
+   text-align: center;
+   line-height: 30px;
+}
+.s5box .cmcontainer .contactInfo ul.snsicon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.s5box .cmcontainer .contactInfo ul.snsicon li {
+    margin: 0 20px;
+}
+.s5box .cmcontainer .contactInfo ul.snsicon li a i {
+    font-size: 25px;
+    opacity: 0.5;
+}
+.s5box .cmcontainer .contactInfo ul.snsicon li:hover a i {
+    opacity: 1;
+}
+/* 폼 */
+.s5box .cmcontainer .contactForm {
+    position: absolute;
+    padding: 70px 50px;
+    background: rgba(255,255,255,1);
+    margin-left: 150px;
+    padding-left: 250px;
+    width: calc(100% - 200px);
+    height: 100%;
+    color: #000;
+}
+.s5box .cmcontainer .contactForm h3 {
+    color: #0f3959; font-weight: 700;
+}
+.s5box .cmcontainer .contactForm .formBox {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 30px;
+}
+.s5box .cmcontainer .contactForm .formBox .inputBox {
+    position: relative;
+    margin-bottom: 40px;
+}
+.s5box .cmcontainer .contactForm .formBox .inputBox.w50 {
+    width: 47%
+}
+.s5box .cmcontainer .contactForm .formBox .inputBox.w100 {
+    width: 100%
+}
+.s5box .cmcontainer .contactForm .formBox .inputBox input,
+.s5box .cmcontainer .contactForm .formBox .inputBox textarea {
+    width: 100%;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    border: none;
+    border-bottom: 2px solid #0f3959;
+    outline: none;
+}
+.s5box .cmcontainer .contactForm .formBox .inputBox textarea {
+    resize: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    height: 100px;
+}
+.s5box .cmcontainer .contactForm .formBox .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    transition: 0.3s;
+    pointer-events: none;
+}
+.s5box .cmcontainer .contactForm .formBox .inputBox input:focus ~ span,
+.s5box .cmcontainer .contactForm .formBox .inputBox textarea:focus ~ span,
+.s5box .cmcontainer .contactForm .formBox .inputBox input:valid ~ span,
+.s5box .cmcontainer .contactForm .formBox .inputBox textarea:valid ~ span {
+    transform: translateY(-20px);
+    font-size: 14px;
+    font-weight: 500;
+    color: #ff275f;
+}
+.s5box .cmcontainer .contactForm .formBox.sendbtn {
+    display: flex;
+}
+.s5box .cmcontainer .contactForm .formBox .inputBox input[type="submit"] {
+    position: relative;
+    cursor: pointer;
+    background: #0f3959;
+    padding: 11px;
+    color: #fff;
+    border: none;
+}
+.s5box .cmcontainer .contactForm .formBox .inputBox input[type="submit"]:hover {
+    background: #ff275f;
+}
 
 
 /* 반응형 */

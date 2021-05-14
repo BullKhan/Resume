@@ -1,8 +1,3 @@
-// window.addEventListener("scroll", function(){
-//     const header = document.querySelector('#header');
-//     const sct = window.scroll();
-//     header.classList.toggle('sticky', window.scrollY >= 1);
-// })
 function scroll_check() {
     var sct = $(this).scrollTop();
     if ( sct>=1 && !$('#header').hasClass('sticky') ) {
@@ -69,10 +64,9 @@ var aboutTop = $('#aboutme').offset().top - 100;
 var educationTop = $('#education').offset().top - 100;
 var skillsTop = $('#skills').offset().top - 100;
 var pfTop = $('#pf').offset().top - 100;
-var lastTop = $('contactme').height() - 100;
+var lastTop = $('body').height() - $(window).height()
 $('nav .depth1 > li').on('click', function(e){
     e.preventDefault();
-    // $(this).addClass('on').siblings().removeClass('on');
     var num = $(this).index()
     switch(num) {
         case 0 : $('html').stop().animate({ scrollTop:1 },500); break;
@@ -83,7 +77,14 @@ $('nav .depth1 > li').on('click', function(e){
         case 5 : $('html').stop().animate({ scrollTop:lastTop },500); break;
     }
 })
-$('.depth1 > li').eq(0).addClass('on')
+
+// 새로고침시 맨위로 이동
+// window.onload = function() {
+//     setTimeout (function () {
+//     scrollTo(0,0);
+//     }, 10);
+// }
+
 
 // 막대 그래프 그리기
 function draw(point,clname) {
@@ -160,10 +161,7 @@ $(window).on('scroll', function(){
 
 
 
-
-
-
-// 화면 조정에 따른 반응형
+// 화면 가로크기 조정에 따른 반응형
 var deviceSize = 900;
 function scrollOX(status) {
     $('html').css({ overflowY:status })
