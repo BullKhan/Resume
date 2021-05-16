@@ -10,6 +10,7 @@
     <title>Resume</title>
     <script src="./js/jquery-3.5.1.min.js"></script>
     <script src="./js/circle-progress.js"></script>
+    
 </head>
 <body>
     <header id="header">
@@ -387,7 +388,17 @@
         </div>
     </section>
     <footer id="footer"></footer>
+    <div class="cursor1"></div>
+    <div class="cursor2"></div>
 
     <script src="./js/index.js"></script>
+    <script>
+        var cursor1 = document.querySelector('.cursor1');
+        var cursor2 = document.querySelector('.cursor2');
+        document.addEventListener('mousemove', function(e){
+            cursor1.style.cssText = cursor2.style.cssText = "left : " + e.clientX + "px; top: " + e.clientY + "px;"
+        });
+        
+    </script>
 </body>
 </html>

@@ -818,5 +818,64 @@ section .s2box .educontent p:nth-of-type(3) {
     }
 }
 
+/* 커서 */
+.cursor1 {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #0f0;
+    border-radius: 50%;
+    left:0; top:0;
+    pointer-events: none;
+    transform: translate(-50%,-50%);
+    z-index: 999999;
+    transition: .1s;
+    animation: sizeChange 2s linear infinite;
+}
+@keyframes sizeChange {
+    0%,100% {
+        width: 50px;
+        height: 50px; 
+    }
+    50% {
+        width: 25px;
+        height: 25px; 
+    }
+}
 
-
+.cursor2 {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background-color: #0f0;
+    border-radius: 50%;
+    left:0; top:0;
+    pointer-events: none;
+    transform: translate(-50%,-50%);
+    z-index: 999999;
+    transition: .15s;
+    animation: shapeChange 1s linear infinite;
+}
+@keyframes shapeChange {
+    0%,100% {
+        background-color: #af0; 
+    }
+    25% {
+        background-color: #f0a; 
+        border-radius: 25%;
+        width: 4px;
+        height: 4px;
+    }
+    50% {
+        background-color: #a0f;
+        border-radius: 0%;
+        width: 2px;
+        height: 2px;
+    }
+    75% {
+        background-color: #aff; 
+        border-radius: 25%;
+        width: 4px;
+        height: 4px;
+    }
+}
