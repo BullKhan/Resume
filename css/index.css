@@ -757,6 +757,39 @@ section .s2box .educontent p:nth-of-type(3) {
     background: #ff275f;
 }
 
+/* 시계 */
+.clock{
+    position: fixed;
+    left: 20px; top:300px;
+    width:50px; height:50px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 25px;
+    transition: all 0.4s;
+    overflow: hidden;
+    line-height: 50px;
+    z-index: 99999;
+}
+.clock i {
+    font-size: 30px; color:rgba(255,255,255,0.7); 
+    line-height: 50px; margin: 0 10px;
+    display: inline-block;
+}
+.clock p {
+    display: inline-block; font-size: 30px;
+    color:rgba(255,255,255,0.7);
+    height: 50px;
+    line-height: 50px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+}
+.clock p span {
+    height: 50px;
+    line-height: 50px;
+}
+.clock.active{
+    width:260px;
+}
+
 
 /* 반응형 */
 @media screen and (max-width: 1490px) {

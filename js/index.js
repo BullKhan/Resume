@@ -20,6 +20,27 @@ for ( let i=0; i<lettersmoke.length; i++ ) {
     })
 }
 
+// 시계
+function clock() {
+    var today = new Date()
+    var hour = today.getHours()
+    var minute = today.getMinutes()
+    var second = today.getSeconds()
+
+    if ( hour>=0 && hour<10 ) { hour = '0'+hour }
+    if ( minute>=0 && minute<10 ) { minute = '0'+minute }
+    if ( second>=0 && second<10 ) { second = '0'+second }
+
+    $('.clock span').eq(0).text(hour)
+    $('.clock span').eq(1).text(minute)
+    $('.clock span').eq(2).text(second)
+}
+clock()
+var timer = setInterval(clock,1000)
+$('.clock').on('click', function(){
+    $(this).toggleClass('active');
+})
+
 // 파도 좌우
 var wave1 = document.getElementById('wave1');
 var wave2 = document.getElementById('wave2');
