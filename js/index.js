@@ -54,6 +54,11 @@ $(window).on('scroll', function(){
     wave2.style.backgroundPositionX = 300 + scy - 8 + 'px';
     wave3.style.backgroundPositionX = 450 + scy + 4 + 'px';
     wave4.style.backgroundPositionX = 150 + scy - 4 + 'px';
+    if ( scy == 0 ) {
+        document.getElementById('clock').style.display = 'none';
+    } else {
+        document.getElementById('clock').style.display = "block";
+    }
 })
 $(window).on('load', function(){
     scroll_check()
