@@ -17,7 +17,7 @@ header {
     height: 100vh;
     background: #000;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     transition: all 1s;
     z-index: 99999;
@@ -62,7 +62,7 @@ header nav {
 header.sticky nav {
     position: relative;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-right: 0px;
     margin-bottom: 8px;
     opacity: 1;
